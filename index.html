@@ -1,465 +1,449 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica; min-height: 22.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The GameShape Blueprint</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #212121;
+            line-height: 1.5;
+        }
+        
+        .page {
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto 20px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Page 1 - Cover + Intro Combined */
+        .cover-intro {
+            background: linear-gradient(135deg, #1A237E 0%, #303F9F 60%, #4CAF50 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .header-section h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .header-section h2 {
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4CAF50;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .hook-text {
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #4CAF50;
+        }
+        
+        .intro-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 1rem;
+        }
+        
+        .intro-content h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .intro-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .value-prop {
+            background: rgba(76, 175, 80, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .value-prop strong {
+            color: #4CAF50;
+        }
+        
+        .cover-footer {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        /* Page 2 - Drills + Blueprint Combined */
+        .content-page {
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-header {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.2rem;
+            color: #1A237E;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .drills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .drill-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+            box-shadow: 0 2px 8px rgba(26, 35, 126, 0.1);
+        }
+        
+        .drill-card h4 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.1rem;
+            color: #1A237E;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .drill-card p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .blueprint-section {
+            background: #1A237E;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .blueprint-section h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #4CAF50;
+        }
+        
+        .blueprint-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .workout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .workout-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            border-left: 3px solid #4CAF50;
+        }
+        
+        .workout-item strong {
+            color: #4CAF50;
+            font-size: 0.9rem;
+        }
+        
+        .workout-item span {
+            font-size: 0.85rem;
+            display: block;
+            margin-top: 0.3rem;
+        }
+        
+        .callout-box {
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Page 3 - CTA */
+        .cta-page {
+            background: linear-gradient(135deg, #1A237E 0%, #303F9F 100%);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .cta-page h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .cta-hook {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-page p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .offer-container {
+            background: rgba(255, 255, 255, 0.15);
+            border: 3px solid #4CAF50;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .founding-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .offer-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.2rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        
+        .price-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-regular {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            text-decoration: line-through;
+            margin-bottom: 1rem;
+        }
+        
+        .offer-includes {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .founding-benefits {
+            font-size: 0.9rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: #4CAF50;
+            color: white;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.6rem;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
+        }
+        
+        .guarantee {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+        
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;The GameShape Blueprint&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Montserrat:wght@400;600;700&amp;display=swap');</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Montserrat', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #212121;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.5;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 8.5in;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 11in;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 6px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>page-break-after: always;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.page:last-child {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Page 1 - Cover + Intro Combined */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cover-intro {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1A237E 0%, #303F9F 60%, #4CAF50 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header-section h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header-section h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 300;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.tagline {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 1px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hook-text {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.intro-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.intro-content h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.intro-content p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-prop {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(76, 175, 80, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 4px solid #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.value-prop strong {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cover-footer {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Page 2 - Drills + Blueprint Combined */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.content-page {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-header {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1A237E;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 3px solid #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-subtitle {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drills-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drill-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 4px solid #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 8px rgba(26, 35, 126, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drill-card h4 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #1A237E;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.2;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.drill-card p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #555;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.4;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blueprint-section {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #1A237E;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blueprint-section h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blueprint-subtitle {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.workout-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.workout-item {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-left: 3px solid #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.workout-item strong {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.workout-item span {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 0.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.callout-box {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.4;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Page 3 - CTA */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-page {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #1A237E 0%, #303F9F 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-page h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-hook {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-page p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.offer-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.15);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 3px solid #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founding-badge {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.5rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 25px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.offer-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.price-highlight {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.price-regular {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: line-through;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.offer-includes {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.founding-benefits {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-style: italic;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #4CAF50;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Bebas Neue', cursive;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 1px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #45a049;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.guarantee {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media print {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>box-shadow: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Page 1 - Cover + Intro Combined --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="page cover-intro"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;The GameShape Blueprint&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Your Athletic Comeback Starts Here&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="tagline"&gt;Basketball. CrossFit. Recovery.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hook-text"&gt;"Remember when your body was your weapon?"&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="intro-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;You're Not Done Yet&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;When you could explode off the line, dominate in the paint, and recover like a machine? That athlete is still inside you. Life got busy, the body got soft, but your competitive DNA never left.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;I'm Coach E. Bell, former pro athlete, and I know exactly how it feels to lose that edge. This isn't some generic gym routine or boring treadmill program. &lt;strong&gt;This is training that speaks your language.&lt;/strong&gt;&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="value-prop"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;strong&gt;The ONLY program combining:&lt;/strong&gt; Basketball skills + CrossFit intensity + Pro-level recovery methods</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cover-footer"&gt;Coach E. Bell | The 360° Coach™ | Former Professional Athlete&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Page 2 - Drills + Blueprint Combined --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="page content-page"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 class="section-header"&gt;The 3-Pillar System&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="section-subtitle"&gt;No boring machines. No isolation exercises. Just competitive training that works.&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="drills-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="drill-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;🏀 Basketball Skills&lt;br&gt;Defensive Slide to Sprint&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Slide baseline-to-baseline → explode into sprint. Builds game-speed agility and that first-step explosion you remember.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="drill-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;💪 CrossFit Power&lt;br&gt;Medicine Ball Slam + Sprint&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;10 explosive slams → sprint to midcourt and back. Full-body power meets cardiovascular conditioning.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="drill-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;❄️ Pro Recovery&lt;br&gt;Contrast Therapy Cycle&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Cold plunge (2 min) → Heat therapy (5 min). Repeat 2x, end cold. What they never taught you in college.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="blueprint-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Your Weekly GameShape Protocol&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="blueprint-subtitle"&gt;Start where you are, not where you were. Built for bodies that have been through battles.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="workout-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="workout-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;strong&gt;Dynamic Prep (5–10 min)&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Sport-specific mobility, not generic stretching&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="workout-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;strong&gt;Skill Work (15 min)&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Ball handling, footwork, muscle memory&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="workout-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;strong&gt;Power Circuit (20 min)&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;KB swings, burpees, sprints — 3 competitive rounds&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="workout-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;strong&gt;Recovery Protocol (10 min)&lt;/strong&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Breathwork + contrast therapy reset&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="callout-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>"Train like this 2x per week for 14 days. Feel that competitor wake up again — sharper, quicker, unstoppable."</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Page 3 - CTA --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="page cta-page"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Think You Still Got It?&lt;br&gt;Prove It.&lt;/h1&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cta-hook"&gt;"Your comeback story starts with the Founding 20"&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;This blueprint is just the beginning. The full transformation happens inside Full Court Fit™ — a 6-week intensive that combines basketball training, CrossFit conditioning, and pro-level recovery. No judgment, no generic routines, just results.&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="offer-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="founding-badge"&gt;Founding Member Exclusive&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="offer-title"&gt;First 20 Athletes Only&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="price-highlight"&gt;Month 1: $199&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="price-regular"&gt;(Regular Price: $299)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="offer-includes"&gt;• Unlimited training sessions&lt;br&gt;• Recovery protocols included&lt;br&gt;• Full Court Fit™ gear&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="founding-benefits"&gt;Founding 20 get lifetime priority booking + program input&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="cta-button"&gt;Claim Your Founding Spot&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="guarantee"&gt;Start where you are. No long-term contracts. Just results.&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p style="margin-top: 1.5rem; font-size: 1rem;"&gt;FullCourtFit.com&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <!-- Page 1 - Cover + Intro Combined -->
+    <div class="page cover-intro">
+        <div class="header-section">
+            <h1>The GameShape Blueprint</h1>
+            <h2>Your Athletic Comeback Starts Here</h2>
+            <div class="tagline">Basketball. CrossFit. Recovery.</div>
+        </div>
+        
+        <div class="hook-text">"Remember when your body was your weapon?"</div>
+        
+        <div class="intro-content">
+            <h3>You're Not Done Yet</h3>
+            <p>When you could explode off the line, dominate in the paint, and recover like a machine? That athlete is still inside you. Life got busy, the body got soft, but your competitive DNA never left.</p>
+            <p>I'm Coach E. Bell, former pro athlete, and I know exactly how it feels to lose that edge. This isn't some generic gym routine or boring treadmill program. <strong>This is training that speaks your language.</strong></p>
+            
+            <div class="value-prop">
+                <strong>The ONLY program combining:</strong> Basketball skills + CrossFit intensity + Pro-level recovery methods
+            </div>
+        </div>
+        
+        <div class="cover-footer">Coach E. Bell | The 360° Coach™ | Former Professional Athlete</div>
+    </div>
+    
+    <!-- Page 2 - Drills + Blueprint Combined -->
+    <div class="page content-page">
+        <h2 class="section-header">The 3-Pillar System</h2>
+        <p class="section-subtitle">No boring machines. No isolation exercises. Just competitive training that works.</p>
+        
+        <div class="drills-grid">
+            <div class="drill-card">
+                <h4>🏀 Basketball Skills<br>Defensive Slide to Sprint</h4>
+                <p>Slide baseline-to-baseline → explode into sprint. Builds game-speed agility and that first-step explosion you remember.</p>
+            </div>
+            <div class="drill-card">
+                <h4>💪 CrossFit Power<br>Medicine Ball Slam + Sprint</h4>
+                <p>10 explosive slams → sprint to midcourt and back. Full-body power meets cardiovascular conditioning.</p>
+            </div>
+            <div class="drill-card">
+                <h4>❄️ Pro Recovery<br>Contrast Therapy Cycle</h4>
+                <p>Cold plunge (2 min) → Heat therapy (5 min). Repeat 2x, end cold. What they never taught you in college.</p>
+            </div>
+        </div>
+        
+        <div class="blueprint-section">
+            <h3>Your Weekly GameShape Protocol</h3>
+            <p class="blueprint-subtitle">Start where you are, not where you were. Built for bodies that have been through battles.</p>
+            <div class="workout-grid">
+                <div class="workout-item">
+                    <strong>Dynamic Prep (5–10 min)</strong>
+                    <span>Sport-specific mobility, not generic stretching</span>
+                </div>
+                <div class="workout-item">
+                    <strong>Skill Work (15 min)</strong>
+                    <span>Ball handling, footwork, muscle memory</span>
+                </div>
+                <div class="workout-item">
+                    <strong>Power Circuit (20 min)</strong>
+                    <span>KB swings, burpees, sprints — 3 competitive rounds</span>
+                </div>
+                <div class="workout-item">
+                    <strong>Recovery Protocol (10 min)</strong>
+                    <span>Breathwork + contrast therapy reset</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="callout-box">
+            "Train like this 2x per week for 14 days. Feel that competitor wake up again — sharper, quicker, unstoppable."
+        </div>
+    </div>
+    
+    <!-- Page 3 - CTA -->
+    <div class="page cta-page">
+        <h1>Think You Still Got It?<br>Prove It.</h1>
+        
+        <div class="cta-hook">"Your comeback story starts with the Founding 20"</div>
+        
+        <p>This blueprint is just the beginning. The full transformation happens inside Full Court Fit™ — a 6-week intensive that combines basketball training, CrossFit conditioning, and pro-level recovery. No judgment, no generic routines, just results.</p>
+        
+        <div class="offer-container">
+            <div class="founding-badge">Founding Member Exclusive</div>
+            <div class="offer-title">First 20 Athletes Only</div>
+            <div class="price-highlight">Month 1: $199</div>
+            <div class="price-regular">(Regular Price: $299)</div>
+            <div class="offer-includes">• Unlimited training sessions<br>• Recovery protocols included<br>• Full Court Fit™ gear</div>
+            <div class="founding-benefits">Founding 20 get lifetime priority booking + program input</div>
+        </div>
+        
+        <button class="cta-button">Claim Your Founding Spot</button>
+        <div class="guarantee">Start where you are. No long-term contracts. Just results.</div>
+        
+        <p style="margin-top: 1.5rem; font-size: 1rem;">FullCourtFit.com</p>
+    </div>
 </body>
 </html>
